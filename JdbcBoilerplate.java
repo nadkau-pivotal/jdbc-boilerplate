@@ -13,18 +13,20 @@ public class JdbcBoilerplate {
    Connection conn = null;
    Statement stmt = null;
    try{
-      //STEP 2: Register JDBC driver
+      //STEP 1: Register JDBC driver
       Class.forName("com.mysql.jdbc.Driver");
 
-      //STEP 3: Open a connection
+      //STEP 2: Open a connection
       System.out.println("Connecting to database...");
       conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
-      //STEP 4: Execute a query
+      //STEP 3: Create a statement
       System.out.println("Creating statement...");
       stmt = conn.createStatement();
       String sql;
       sql = "SELECT id, first, last, age FROM Employees";
+      
+      //STEP 4: Execute query
       ResultSet rs = stmt.executeQuery(sql);
 
       //STEP 5: Extract data from result set
